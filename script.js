@@ -11,15 +11,15 @@ function Player(name, score){
 }
 
 var categories = new Array();
-categories.push(new Category('Artes', 'artes.jgp'));
-categories.push(new Category('Cotidiano', 'cotidiano.jpg'));
-categories.push(new Category('Ciencias', 'ciencias.jpg'));
-categories.push(new Category('Entretenimento', 'entretenimento.jpg'));
-categories.push(new Category('Esportes', 'esportes.jpg'));
-categories.push(new Category('Historia', 'historia.jpg'));
-categories.push(new Category('Geografia', 'geografia.jpg'));
-categories.push(new Category('Historia Natural', 'historianatural.jpg'));
-categories.push(new Category('Variedades', 'variedades.jpg'));
+categories.push(new Category('Artes', 'artes.png'));
+categories.push(new Category('Cotidiano', 'cotidiano.png'));
+categories.push(new Category('Ciencias', 'ciencias.png'));
+categories.push(new Category('Entretenimento', 'entretenimento.png'));
+categories.push(new Category('Esportes', 'esportes.png'));
+categories.push(new Category('Historia', 'historia.png'));
+categories.push(new Category('Geografia', 'geografia.png'));
+categories.push(new Category('Historia Natural', 'historianatural.png'));
+categories.push(new Category('Variedades', 'variedades.png'));
 
 console.log(categories);
 
@@ -51,7 +51,14 @@ function newGame(){
 }
 
 function rollDice(){
-    activeCategory = categories[Math.floor(Math.random() * 9.4)];
+    activeCategory = categories[Math.floor(Math.random() * 8.4)];
+    console.log(activeCategory.image);
+    document.querySelector('#beginImage').src = activeCategory.image;
+    document.querySelector('.beginImage').classList.remove('player-name');
+    document.querySelector('.titulo').textContent = activeCategory.name;
+    document.querySelector('.subtitulo').textContent = 'vez de ' + players[activePlayer].name;
+    document.querySelector('.btn-roll').style.display = 'none';
 }
 
 document.querySelector('.newButton').addEventListener('click', newGame);
+document.querySelector('.btn-roll').addEventListener('click', rollDice);
